@@ -1,6 +1,5 @@
-import type { LucideIcon } from "lucide-react"
-
-import { cn } from "@/lib/utils"
+import { cn } from '@/lib/utils'
+import type { LucideIcon } from 'lucide-react'
 
 interface SectionHeaderProps {
   icon?: LucideIcon
@@ -18,7 +17,7 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "mx-auto mb-12 max-w-2xl text-center md:mb-16",
+        'mx-auto mb-12 max-w-2xl text-center md:mb-16',
         className,
       )}
     >
@@ -27,11 +26,11 @@ export function SectionHeader({
           <Icon size={32} />
         </div>
       )}
-      <h2 className="font-['DM_Sans'] text-3xl font-bold text-foreground md:text-4xl">
+      <h2 className="font-heading text-3xl font-bold text-foreground md:text-4xl">
         {heading}
       </h2>
       {subtext && (
-        <p className="mx-auto mt-4 max-w-2xl text-center text-base text-muted-foreground md:text-lg">
+        <p className="mt-4 text-base text-muted-foreground md:text-lg">
           {subtext}
         </p>
       )}

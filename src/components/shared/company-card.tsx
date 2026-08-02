@@ -1,12 +1,11 @@
-import { ArrowRight } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { cn } from '@/lib/utils'
 
 interface CompanyCardProps {
-  name: string;
-  description: string;
-  href?: string;
-  status: "live" | "coming-soon";
+  name: string
+  description: string
+  href?: string
+  status: 'live' | 'coming-soon'
+  className?: string
 }
 
 export function CompanyCard({
@@ -14,40 +13,58 @@ export function CompanyCard({
   description,
   href,
   status,
+  className,
 }: CompanyCardProps) {
-  const isLive = status === "live";
+  const isLive = status === 'live'
 
   return (
-    <Card
-      className={`gap-0 p-6 text-center ${
-        isLive
-          ? "transition-all duration-200 hover:translate-y-[-2px] hover:shadow-md"
-          : "cursor-default border-dashed opacity-60"
-      }`}
+    <div
+      className={cn(
+        'rounded-xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all duration-200',
+        isLive && 'hover:-translate-y-1 hover:shadow-md',
+        className,
+      )}
     >
-      <h3 className="mb-2 font-heading text-xl font-bold">{name}</h3>
-      <div className="mb-2">
-        {isLive ? (
-          <Badge variant="outline" className="text-xs">
-            <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-success" />
-            Live
-          </Badge>
-        ) : (
-          <Badge variant="secondary" className="text-xs">
-            Coming Soon
-          </Badge>
-        )}
+      <div className="mb-4 flex items-center gap-3">
+        <div
+          className={cn(
+            'flex size-12 items-center justify-center rounded-full text-sm font-bold font-heading',
+            isLive
+              ? 'bg-accent/10 text-accent'
+              : 'bg-muted text-muted-foreground',
+          )}
+        >
+          {isLive ? name.charAt(0) : '?'}
+        </div>
+        <div>
+          <h3 className="font-heading text-lg font-semibold text-foreground">
+            {name}
+          </h3>
+          <span
+            className={cn(
+              'text-xs font-medium',
+              isLive ? 'text-accent' : 'text-muted-foreground',
+            )}
+          >
+            {isLive ? 'Live' : 'Coming Soon'}
+          </span>
+        </div>
       </div>
-      <p className="mb-4 text-sm text-muted-foreground">{description}</p>
+      <p className="text-sm text-muted-foreground leading-relaxed">
+        {description}
+      </p>
       {isLive && href ? (
         <a
           href={href}
-          className="inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+          className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-accent transition-colors"
         >
-          Visit
-          <ArrowRight size={14} />
+          Visit {name} →
         </a>
-      ) : null}
-    </Card>
-  );
+      ) : (
+        <span className="mt-4 inline-flex items-center gap-1 text-sm text-muted-foreground">
+          Stay tuned
+        </span>
+      )}
+    </div>
+  )
 }
