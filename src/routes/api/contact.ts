@@ -3,6 +3,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { z } from "zod/v4";
 import { resend, FROM_EMAIL, TO_EMAIL } from "@/lib/resend";
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 const contactFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().min(1, "Email is required").email("Invalid email address"),
@@ -91,18 +100,18 @@ export const Route = createFileRoute("/api/contact")({
             await resend.emails.send({
               from: FROM_EMAIL,
               to: TO_EMAIL,
-              subject: `New Contact Form: ${data.serviceInterest} inquiry from ${data.name}`,
+              subject: `New Contact Form: ${escapeHtml(data.serviceInterest)} inquiry from ${escapeHtml(data.name)}`,
               html: `
                 <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${data.name}</p>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Company:</strong> ${data.company || "Not provided"}</p>
-                <p><strong>Service Interest:</strong> ${data.serviceInterest}</p>
-                <p><strong>Budget Range:</strong> ${data.budgetRange}</p>
-                <p><strong>Timeline:</strong> ${data.timeline}</p>
+                <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
+                <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
+                <p><strong>Company:</strong> ${escapeHtml(data.company || "Not provided")}</p>
+                <p><strong>Service Interest:</strong> ${escapeHtml(data.serviceInterest)}</p>
+                <p><strong>Budget Range:</strong> ${escapeHtml(data.budgetRange)}</p>
+                <p><strong>Timeline:</strong> ${escapeHtml(data.timeline)}</p>
                 <hr />
                 <p><strong>Message:</strong></p>
-                <p>${data.message.replace(/\n/g, "<br />")}</p>
+                <p>${escapeHtml(data.message).replace(/\n/g, "<br />")}</p>
               `,
             });
 
@@ -112,11 +121,11 @@ export const Route = createFileRoute("/api/contact")({
               to: data.email,
               subject: "We received your message — Gabeyre Global Inc",
               html: `
-                <h2>Thanks for reaching out, ${data.name}!</h2>
-                <p>We've received your inquiry about <strong>${data.serviceInterest}</strong> and will get back to you within 24 hours.</p>
+                <h2>Thanks for reaching out, ${escapeHtml(data.name)}!</h2>
+                <p>We've received your inquiry about <strong>${escapeHtml(data.serviceInterest)}</strong> and will get back to you within 24 hours.</p>
                 <p>Here's a summary of what you shared:</p>
                 <blockquote style="border-left: 3px solid #0D9488; padding-left: 16px; margin: 16px 0;">
-                  <p>${data.message.replace(/\n/g, "<br />")}</p>
+                  <p>${escapeHtml(data.message).replace(/\n/g, "<br />")}</p>
                 </blockquote>
                 <p>In the meantime, feel free to check out our work at <a href="https://gabeyreglobal.ca/work">gabeyreglobal.ca/work</a>.</p>
                 <hr />
