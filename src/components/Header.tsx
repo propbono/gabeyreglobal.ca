@@ -32,10 +32,13 @@ export default function Header() {
         {/* Logo */}
         <Link
           to="/"
-          className="text-xl font-bold text-primary no-underline"
+          className="flex items-baseline gap-1.5 text-primary no-underline"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
-          Gabeyre Global
+          <span className="text-xl font-bold tracking-tight">Gabeyre Global</span>
+          <span className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+            Inc
+          </span>
         </Link>
 
         {/* Desktop nav */}
@@ -98,11 +101,14 @@ export default function Header() {
             <div className="flex items-center border-b pb-4">
               <Link
                 to="/"
-                className="text-xl font-bold text-primary no-underline"
+                className="flex items-baseline gap-1.5 text-primary no-underline"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
                 onClick={() => setMobileOpen(false)}
               >
-                Gabeyre Global
+                <span className="text-xl font-bold tracking-tight">Gabeyre Global</span>
+                <span className="text-xs font-medium tracking-wider text-muted-foreground uppercase">
+                  Inc
+                </span>
               </Link>
             </div>
 
