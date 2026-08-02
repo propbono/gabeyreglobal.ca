@@ -52,6 +52,7 @@ async function captureServerEvent(
   try {
     await fetch(`${POSTHOG_HOST}/capture/`, {
       method: "POST",
+      signal: AbortSignal.timeout(5000),
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         api_key: apiKey,
@@ -101,7 +102,7 @@ export const Route = createFileRoute("/api/contact")({
               from: FROM_EMAIL,
               to: TO_EMAIL,
               reply_to: data.email,
-              subject: `New Contact Form: ${data.serviceInterest} inquiry from ${data.name}`,
+              subject: `New Contact Form: ${data.serviceInterest} inquiry from ${data.name.replace(/[\r\n]/g, " ")}`,
               html: `
                 <h2>New Contact Form Submission</h2>
                 <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
