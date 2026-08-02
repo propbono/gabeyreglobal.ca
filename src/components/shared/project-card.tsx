@@ -1,12 +1,12 @@
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
-  title: string
-  category: string
-  description: string
-  href: string
-  image?: string
-  className?: string
+  title: string;
+  category: string;
+  description: string;
+  href: string;
+  image?: string;
+  className?: string;
 }
 
 export function ProjectCard({
@@ -23,7 +23,7 @@ export function ProjectCard({
       target="_blank"
       rel="noopener noreferrer"
       className={cn(
-        'group block rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md',
+        "group block rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md",
         className,
       )}
     >
@@ -55,5 +55,5 @@ export function ProjectCard({
         </span>
       </div>
     </a>
-  )
+  );
 }

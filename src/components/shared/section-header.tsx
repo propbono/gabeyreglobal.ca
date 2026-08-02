@@ -1,11 +1,11 @@
-import { cn } from '@/lib/utils'
-import type { LucideIcon } from 'lucide-react'
+import type { LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
-  icon?: LucideIcon
-  heading: string
-  subtext?: string
-  className?: string
+  icon?: LucideIcon;
+  heading: string;
+  subtext?: string;
+  className?: string;
 }
 
 export function SectionHeader({
@@ -16,10 +16,7 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div
-      className={cn(
-        'mx-auto mb-12 max-w-2xl text-center md:mb-16',
-        className,
-      )}
+      className={cn("mx-auto mb-12 max-w-2xl text-center md:mb-16", className)}
     >
       {Icon && (
         <div className="mb-5 flex justify-center text-accent">
@@ -35,5 +32,5 @@ export function SectionHeader({
         </p>
       )}
     </div>
-  )
+  );
 }

@@ -1,32 +1,31 @@
-import { Briefcase, Code2, Lightbulb, Printer } from 'lucide-react'
-
-import { SectionWrapper } from '@/components/shared/section-wrapper'
-import { SectionHeader } from '@/components/shared/section-header'
-import { ServiceCard } from '@/components/shared/service-card'
+import { Briefcase, Code2, Lightbulb, Printer } from "lucide-react";
+import { SectionHeader } from "@/components/shared/section-header";
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { ServiceCard } from "@/components/shared/service-card";
 
 const services = [
   {
     icon: Printer,
-    title: 'Commercial Printing',
+    title: "Commercial Printing",
     description:
-      'Full-service print shop for businesses. Business cards, flyers, banners, signage, and more — backed by our Gemprint subsidiary.',
-    href: '/services/print',
+      "Full-service print shop for businesses. Business cards, flyers, banners, signage, and more — backed by our Gemprint subsidiary.",
+    href: "/services/print",
   },
   {
     icon: Code2,
-    title: 'Web & App Development',
+    title: "Web & App Development",
     description:
-      'Custom web applications, mobile apps, SaaS platforms, and e-commerce solutions. Modern stack, proven process.',
-    href: '/services/development',
+      "Custom web applications, mobile apps, SaaS platforms, and e-commerce solutions. Modern stack, proven process.",
+    href: "/services/development",
   },
   {
     icon: Lightbulb,
-    title: 'Consulting',
+    title: "Consulting",
     description:
-      'Technical strategy, architecture review, and project planning. We help you make the right technology decisions.',
-    href: '/contact',
+      "Technical strategy, architecture review, and project planning. We help you make the right technology decisions.",
+    href: "/contact",
   },
-]
+];
 
 export function ServicesGrid() {
   return (
@@ -48,5 +47,5 @@ export function ServicesGrid() {
         ))}
       </div>
     </SectionWrapper>
-  )
+  );
 }

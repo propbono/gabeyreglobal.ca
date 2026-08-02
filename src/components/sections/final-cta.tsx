@@ -1,6 +1,5 @@
-import { Button } from '@/components/ui/button'
-
-import { SectionWrapper } from '@/components/shared/section-wrapper'
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { Button } from "@/components/ui/button";
 
 export function FinalCTA() {
   return (
@@ -19,5 +18,5 @@ export function FinalCTA() {
         </div>
       </div>
     </SectionWrapper>
-  )
+  );
 }

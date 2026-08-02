@@ -1,54 +1,78 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
-import { TanStackDevtools } from '@tanstack/react-devtools'
-import { useEffect } from 'react'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
-import { initPostHog } from '../lib/posthog'
+import { TanStackDevtools } from "@tanstack/react-devtools";
+import { createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { useEffect } from "react";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { initPostHog } from "../lib/posthog";
 
-import appCss from '../styles.css?url'
+import appCss from "../styles.css?url";
+
+const SITE_URL =
+  import.meta.env.VITE_PUBLIC_SITE_URL || "https://gabeyreglobal.ca";
+const SITE_TITLE =
+  "Gabeyre Global Inc — Software & Print for Canadian Business";
+const SITE_DESCRIPTION =
+  "Gabeyre Global Inc is a Canadian corporation operating Gemprint (commercial printing) and providing web & app development services. Based in Ontario, serving clients across Canada.";
+const OG_IMAGE = `${SITE_URL}/api/og?title=${encodeURIComponent(SITE_TITLE)}`;
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
+      { charSet: "utf-8" },
       {
-        charSet: 'utf-8',
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
       },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'Gabeyre Global Inc — Software & Print for Canadian Business',
-      },
+      { title: SITE_TITLE },
+      { name: "description", content: SITE_DESCRIPTION },
+      // Open Graph
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:title", content: SITE_TITLE },
+      { property: "og:description", content: SITE_DESCRIPTION },
+      { property: "og:image", content: OG_IMAGE },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:locale", content: "en_CA" },
+      { property: "og:site_name", content: "Gabeyre Global Inc" },
+      // Twitter Card
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { name: "twitter:image", content: OG_IMAGE },
     ],
     links: [
       {
-        rel: 'stylesheet',
+        rel: "stylesheet",
         href: appCss,
       },
       {
-        rel: 'preconnect',
-        href: 'https://fonts.googleapis.com',
+        rel: "canonical",
+        href: SITE_URL,
       },
       {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossOrigin: 'anonymous',
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
       },
       {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap',
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+        crossOrigin: "anonymous",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap",
       },
     ],
   }),
   shellComponent: RootDocument,
-})
+});
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    initPostHog()
-  }, [])
+    initPostHog();
+  }, []);
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -61,11 +85,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Footer />
         <TanStackDevtools
           config={{
-            position: 'bottom-right',
+            position: "bottom-right",
           }}
           plugins={[
             {
-              name: 'Tanstack Router',
+              name: "Tanstack Router",
               render: <TanStackRouterDevtoolsPanel />,
             },
           ]}
@@ -73,5 +97,5 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
-  )
+  );
 }

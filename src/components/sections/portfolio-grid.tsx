@@ -1,26 +1,25 @@
-import { FolderOpen } from 'lucide-react'
-
-import { Button } from '@/components/ui/button'
-import { SectionWrapper } from '@/components/shared/section-wrapper'
-import { SectionHeader } from '@/components/shared/section-header'
-import { ProjectCard } from '@/components/shared/project-card'
+import { FolderOpen } from "lucide-react";
+import { ProjectCard } from "@/components/shared/project-card";
+import { SectionHeader } from "@/components/shared/section-header";
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { Button } from "@/components/ui/button";
 
 const projects = [
   {
-    title: 'Gemprint',
-    category: 'Commercial Print Website',
+    title: "Gemprint",
+    category: "Commercial Print Website",
     description:
-      'Full-stack e-commerce print platform. Custom Next.js build with product catalog, quoting system, and integrated contact workflow.',
-    href: 'https://gemprint.ca',
+      "Full-stack e-commerce print platform. Custom Next.js build with product catalog, quoting system, and integrated contact workflow.",
+    href: "https://gemprint.ca",
   },
   {
-    title: 'Greg Mozer',
-    category: 'Personal Brand & Portfolio',
+    title: "Greg Mozer",
+    category: "Personal Brand & Portfolio",
     description:
-      'Personal portfolio and brand site. Demonstrates range across web development, game dev, and creative coding.',
-    href: 'https://gmozer.ca',
+      "Personal portfolio and brand site. Demonstrates range across web development, game dev, and creative coding.",
+    href: "https://gmozer.ca",
   },
-]
+];
 
 export function PortfolioGrid() {
   return (
@@ -47,5 +46,5 @@ export function PortfolioGrid() {
         </Button>
       </div>
     </SectionWrapper>
-  )
+  );
 }

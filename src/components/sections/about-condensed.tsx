@@ -1,7 +1,7 @@
-import { Button } from '@/components/ui/button'
+import { SectionHeader } from "@/components/shared/section-header";
 
-import { SectionWrapper } from '@/components/shared/section-wrapper'
-import { SectionHeader } from '@/components/shared/section-header'
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { Button } from "@/components/ui/button";
 
 export function AboutCondensed() {
   return (
@@ -19,8 +19,8 @@ export function AboutCondensed() {
         </p>
         <p>
           We don&apos;t just write code or run prints — we think about your
-          business. Every project we take on gets the same care we&apos;d give our
-          own companies, because we run our own companies, too.
+          business. Every project we take on gets the same care we&apos;d give
+          our own companies, because we run our own companies, too.
         </p>
       </div>
       <div className="mt-8 text-center">
@@ -29,5 +29,5 @@ export function AboutCondensed() {
         </Button>
       </div>
     </SectionWrapper>
-  )
+  );
 }

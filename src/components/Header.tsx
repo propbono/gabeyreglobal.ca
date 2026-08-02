@@ -1,34 +1,30 @@
-import { Link } from '@tanstack/react-router'
-import { Menu, ChevronDown } from 'lucide-react'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { Link } from "@tanstack/react-router";
+import { ChevronDown, Menu } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@/components/ui/sheet'
-import { cn } from '@/lib/utils'
-import { NAV_ITEMS } from '@/lib/constants'
-import { posthog } from '@/lib/posthog'
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { NAV_ITEMS } from "@/lib/constants";
+import { posthog } from "@/lib/posthog";
+import { cn } from "@/lib/utils";
 
-const serviceItem = NAV_ITEMS[0]
-const linkItems = NAV_ITEMS.slice(1)
+const serviceItem = NAV_ITEMS[0];
+const linkItems = NAV_ITEMS.slice(1);
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleCtaClick = () => {
-    posthog.capture('cta_clicked', {
-      cta_location: 'nav',
-      cta_label: 'Start a Project',
-    })
-  }
+    posthog.capture("cta_clicked", {
+      cta_location: "nav",
+      cta_label: "Start a Project",
+    });
+  };
 
   return (
     <header className="relative h-18 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -48,8 +44,9 @@ export default function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
+                type="button"
                 className={cn(
-                  'flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground',
+                  "flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground",
                 )}
               >
                 {serviceItem.label}
@@ -93,7 +90,10 @@ export default function Header() {
               <Menu className="size-6" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="flex w-full flex-col sm:max-w-sm">
+          <SheetContent
+            side="right"
+            className="flex w-full flex-col sm:max-w-sm"
+          >
             {/* Mobile nav header */}
             <div className="flex items-center border-b pb-4">
               <Link
@@ -144,8 +144,8 @@ export default function Header() {
                 variant="default"
                 className="w-full"
                 onClick={() => {
-                  handleCtaClick()
-                  setMobileOpen(false)
+                  handleCtaClick();
+                  setMobileOpen(false);
                 }}
                 asChild
               >
@@ -156,5 +156,5 @@ export default function Header() {
         </Sheet>
       </div>
     </header>
-  )
+  );
 }

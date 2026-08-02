@@ -1,12 +1,11 @@
-import { defineConfig } from 'vite'
-import { devtools } from '@tanstack/devtools-vite'
+import { sentryVitePlugin } from "@sentry/vite-plugin";
+import tailwindcss from "@tailwindcss/vite";
+import { devtools } from "@tanstack/devtools-vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
-import { tanstackStart } from '@tanstack/react-start/plugin/vite'
-import { sentryVitePlugin } from '@sentry/vite-plugin'
-
-import viteReact from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
-import { nitro } from 'nitro/vite'
+import viteReact from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
+import { defineConfig } from "vite";
 
 const config = defineConfig({
   resolve: { tsconfigPaths: true },
@@ -25,6 +24,6 @@ const config = defineConfig({
   build: {
     sourcemap: true,
   },
-})
+});
 
-export default config
+export default config;
