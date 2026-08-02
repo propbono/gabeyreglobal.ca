@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { useForm, type FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod/v4";
 import { useState, useRef, useCallback } from "react";
@@ -187,21 +187,20 @@ export function ContactForm() {
     }
   };
 
-  const handleValidationError = useCallback(() => {
+  const handleValidationError = useCallback((validationErrors: FieldErrors<ContactFormValues>) => {
     const posthog = initPostHog();
     if (posthog) {
-      // Track errored required fields
       for (const field of REQUIRED_FIELDS) {
-        if (errors[field]) {
+        if (validationErrors[field]) {
           posthog.capture("form_errored", {
             form_name: "contact",
             field_name: field,
-            error_type: errors[field]?.type ?? "validation",
+            error_type: validationErrors[field]?.type ?? "validation",
           });
         }
       }
     }
-  }, [errors]);
+  }, []);
 
   if (status === "success") {
     return (
