@@ -1,12 +1,12 @@
-import { cn } from '@/lib/utils'
-import type { LucideIcon } from 'lucide-react'
+import type { LucideIcon } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface ServiceCardProps {
-  icon: LucideIcon
-  title: string
-  description: string
-  href: string
-  className?: string
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  href: string;
+  className?: string;
 }
 
 export function ServiceCard({
@@ -20,7 +20,7 @@ export function ServiceCard({
     <a
       href={href}
       className={cn(
-        'group block rounded-xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md',
+        "group block rounded-xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md",
         className,
       )}
     >
@@ -37,5 +37,5 @@ export function ServiceCard({
         Learn More →
       </span>
     </a>
-  )
+  );
 }

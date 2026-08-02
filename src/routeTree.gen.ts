@@ -11,7 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ErrorRouteImport } from './routes/error'
+import { Route as NotFoundRouteImport } from './routes/not-found'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as ApiOgRouteImport } from './routes/api/og'
+import { Route as CompaniesIndexRouteImport } from './routes/companies/index'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
+import { Route as ServicesIndexRouteImport } from './routes/services/index'
+import { Route as ServicesDevelopmentRouteImport } from './routes/services/development'
+import { Route as ServicesPrintRouteImport } from './routes/services/print'
+import { Route as WorkIndexRouteImport } from './routes/work/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -23,40 +33,167 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ErrorRoute = ErrorRouteImport.update({
+  id: '/error',
+  path: '/error',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotFoundRoute = NotFoundRouteImport.update({
+  id: '/not-found',
+  path: '/not-found',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
   path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiOgRoute = ApiOgRouteImport.update({
+  id: '/api/og',
+  path: '/api/og',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompaniesIndexRoute = CompaniesIndexRouteImport.update({
+  id: '/companies/',
+  path: '/companies/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactIndexRoute = ContactIndexRouteImport.update({
+  id: '/contact/',
+  path: '/contact/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/services/',
+  path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesDevelopmentRoute = ServicesDevelopmentRouteImport.update({
+  id: '/services/development',
+  path: '/services/development',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesPrintRoute = ServicesPrintRouteImport.update({
+  id: '/services/print',
+  path: '/services/print',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkIndexRoute = WorkIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => WorkRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/work': typeof WorkRoute
+  '/error': typeof ErrorRoute
+  '/not-found': typeof NotFoundRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/work': typeof WorkRouteWithChildren
+  '/api/og': typeof ApiOgRoute
+  '/services/development': typeof ServicesDevelopmentRoute
+  '/services/print': typeof ServicesPrintRoute
+  '/companies/': typeof CompaniesIndexRoute
+  '/contact/': typeof ContactIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/work': typeof WorkRoute
+  '/error': typeof ErrorRoute
+  '/not-found': typeof NotFoundRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/api/og': typeof ApiOgRoute
+  '/services/development': typeof ServicesDevelopmentRoute
+  '/services/print': typeof ServicesPrintRoute
+  '/companies': typeof CompaniesIndexRoute
+  '/contact': typeof ContactIndexRoute
+  '/services': typeof ServicesIndexRoute
+  '/work': typeof WorkIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/work': typeof WorkRoute
+  '/error': typeof ErrorRoute
+  '/not-found': typeof NotFoundRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/work': typeof WorkRouteWithChildren
+  '/api/og': typeof ApiOgRoute
+  '/services/development': typeof ServicesDevelopmentRoute
+  '/services/print': typeof ServicesPrintRoute
+  '/companies/': typeof CompaniesIndexRoute
+  '/contact/': typeof ContactIndexRoute
+  '/services/': typeof ServicesIndexRoute
+  '/work/': typeof WorkIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/work'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/error'
+    | '/not-found'
+    | '/sitemap.xml'
+    | '/work'
+    | '/api/og'
+    | '/services/development'
+    | '/services/print'
+    | '/companies/'
+    | '/contact/'
+    | '/services/'
+    | '/work/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/work'
-  id: '__root__' | '/' | '/about' | '/work'
+  to:
+    | '/'
+    | '/about'
+    | '/error'
+    | '/not-found'
+    | '/sitemap.xml'
+    | '/api/og'
+    | '/services/development'
+    | '/services/print'
+    | '/companies'
+    | '/contact'
+    | '/services'
+    | '/work'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/error'
+    | '/not-found'
+    | '/sitemap.xml'
+    | '/work'
+    | '/api/og'
+    | '/services/development'
+    | '/services/print'
+    | '/companies/'
+    | '/contact/'
+    | '/services/'
+    | '/work/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  WorkRoute: typeof WorkRoute
+  ErrorRoute: typeof ErrorRoute
+  NotFoundRoute: typeof NotFoundRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  WorkRoute: typeof WorkRouteWithChildren
+  ApiOgRoute: typeof ApiOgRoute
+  ServicesDevelopmentRoute: typeof ServicesDevelopmentRoute
+  ServicesPrintRoute: typeof ServicesPrintRoute
+  CompaniesIndexRoute: typeof CompaniesIndexRoute
+  ContactIndexRoute: typeof ContactIndexRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -75,6 +212,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/error': {
+      id: '/error'
+      path: '/error'
+      fullPath: '/error'
+      preLoaderRoute: typeof ErrorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/not-found': {
+      id: '/not-found'
+      path: '/not-found'
+      fullPath: '/not-found'
+      preLoaderRoute: typeof NotFoundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work': {
       id: '/work'
       path: '/work'
@@ -82,14 +240,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/og': {
+      id: '/api/og'
+      path: '/api/og'
+      fullPath: '/api/og'
+      preLoaderRoute: typeof ApiOgRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/companies/': {
+      id: '/companies/'
+      path: '/companies'
+      fullPath: '/companies/'
+      preLoaderRoute: typeof CompaniesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/contact'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/services'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/development': {
+      id: '/services/development'
+      path: '/services/development'
+      fullPath: '/services/development'
+      preLoaderRoute: typeof ServicesDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/print': {
+      id: '/services/print'
+      path: '/services/print'
+      fullPath: '/services/print'
+      preLoaderRoute: typeof ServicesPrintRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/work/': {
+      id: '/work/'
+      path: '/'
+      fullPath: '/work/'
+      preLoaderRoute: typeof WorkIndexRouteImport
+      parentRoute: typeof WorkRoute
+    }
   }
 }
+
+interface WorkRouteChildren {
+  WorkIndexRoute: typeof WorkIndexRoute
+}
+
+const WorkRouteChildren: WorkRouteChildren = {
+  WorkIndexRoute: WorkIndexRoute,
+}
+
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  WorkRoute: WorkRoute,
+  ErrorRoute: ErrorRoute,
+  NotFoundRoute: NotFoundRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  WorkRoute: WorkRouteWithChildren,
+  ApiOgRoute: ApiOgRoute,
+  ServicesDevelopmentRoute: ServicesDevelopmentRoute,
+  ServicesPrintRoute: ServicesPrintRoute,
+  CompaniesIndexRoute: CompaniesIndexRoute,
+  ContactIndexRoute: ContactIndexRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

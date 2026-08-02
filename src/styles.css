@@ -77,53 +77,53 @@
 @layer base {
   :root {
     /* ── Primary: Deep navy ── */
-    --primary: 222 64% 16%;           /* #0F1F45 */
+    --primary: 222 64% 16%; /* #0F1F45 */
     --primary-foreground: 210 40% 98%; /* #F8FAFC */
 
     /* ── Accent: Teal ── */
-    --accent: 173 82% 27%;            /* #0D7C74 */
+    --accent: 173 82% 27%; /* #0D7C74 */
     --accent-foreground: 170 76% 96%; /* #F0FDFA */
 
     /* ── Surface ── */
-    --background: 45 55% 98%;         /* #FDFBF8 — warm white */
-    --foreground: 222 47% 12%;        /* #0F172A — body text */
-    --card: 0 0% 100%;               /* #FFFFFF */
+    --background: 45 55% 98%; /* #FDFBF8 — warm white */
+    --foreground: 222 47% 12%; /* #0F172A — body text */
+    --card: 0 0% 100%; /* #FFFFFF */
     --card-foreground: 222 47% 12%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 12%;
 
     /* ── Muted ── */
-    --muted: 210 40% 96%;             /* #F1F5F9 */
-    --muted-foreground: 215 16% 47%;  /* #475569 */
+    --muted: 210 40% 96%; /* #F1F5F9 */
+    --muted-foreground: 215 16% 47%; /* #475569 */
 
     /* ── Secondary (subtle alternative to primary) ── */
-    --secondary: 210 40% 96%;         /* same as muted */
+    --secondary: 210 40% 96%; /* same as muted */
     --secondary-foreground: 222 47% 12%;
 
     /* ── Semantic ── */
-    --success: 142 71% 29%;           /* #15803D */
+    --success: 142 71% 29%; /* #15803D */
     --success-foreground: 142 77% 97%;
-    --warning: 26 90% 37%;            /* #B45309 */
+    --warning: 26 90% 37%; /* #B45309 */
     --warning-foreground: 48 100% 96%;
-    --destructive: 0 72% 48%;         /* #DC2626 */
+    --destructive: 0 72% 48%; /* #DC2626 */
     --destructive-foreground: 0 86% 97%;
-    --info: 221 83% 53%;              /* #2563EB */
+    --info: 221 83% 53%; /* #2563EB */
     --info-foreground: 214 75% 97%;
 
     /* ── Borders & Inputs ── */
-    --border: 213 27% 84%;            /* #E2E8F0 */
+    --border: 213 27% 84%; /* #E2E8F0 */
     --input: 213 27% 84%;
-    --ring: 173 82% 27%;              /* teal focus ring */
+    --ring: 173 82% 27%; /* teal focus ring */
 
     /* ── Shape ── */
     --radius: 0.5rem;
 
     /* ── Chart colors (for data viz / subsidiary branding) ── */
-    --chart-1: 222 64% 16%;           /* navy */
-    --chart-2: 173 82% 27%;           /* teal */
-    --chart-3: 193 100% 44%;          /* gemprint cyan */
-    --chart-4: 26 90% 37%;            /* amber */
-    --chart-5: 215 16% 47%;           /* slate */
+    --chart-1: 222 64% 16%; /* navy */
+    --chart-2: 173 82% 27%; /* teal */
+    --chart-3: 193 100% 44%; /* gemprint cyan */
+    --chart-4: 26 90% 37%; /* amber */
+    --chart-5: 215 16% 47%; /* slate */
   }
 }
 

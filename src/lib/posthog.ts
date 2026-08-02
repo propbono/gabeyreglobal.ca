@@ -1,5 +1,5 @@
-import posthog from "posthog-js";
 import type { PostHog } from "posthog-js";
+import posthog from "posthog-js";
 
 const POSTHOG_KEY = import.meta.env.VITE_PUBLIC_POSTHOG_KEY as string;
 const POSTHOG_HOST =

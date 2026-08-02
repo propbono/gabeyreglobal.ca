@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 
 export function HeroSection() {
   return (
@@ -25,5 +25,5 @@ export function HeroSection() {
         Trusted by 50+ businesses since 2017
       </p>
     </section>
-  )
+  );
 }
