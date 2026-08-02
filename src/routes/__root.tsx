@@ -4,6 +4,7 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { useEffect } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { ThemeProvider } from "../components/theme-provider";
 import { initPostHog } from "../lib/posthog";
 
 import appCss from "../styles.css?url";
@@ -47,6 +48,7 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: appCss,
       },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       {
         rel: "canonical",
         href: SITE_URL,
@@ -80,9 +82,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body className="font-sans antialiased flex min-h-screen flex-col" suppressHydrationWarning>
+        <ThemeProvider>
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />
+        </ThemeProvider>
         <TanStackDevtools
           config={{
             position: "bottom-right",

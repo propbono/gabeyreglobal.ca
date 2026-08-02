@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu, Moon, Sun } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -18,6 +19,8 @@ const linkItems = NAV_ITEMS.slice(1);
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const ThemeIcon = theme === "dark" ? Sun : Moon;
 
   const handleCtaClick = () => {
     posthog.capture("cta_clicked", {
@@ -78,7 +81,15 @@ export default function Header() {
         </nav>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-2 lg:flex">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            aria-label="Toggle theme"
+          >
+            <ThemeIcon className="size-4" />
+          </Button>
           <Button variant="default" size="sm" onClick={handleCtaClick} asChild>
             <Link to="/contact">Start a Project</Link>
           </Button>
@@ -142,17 +153,29 @@ export default function Header() {
 
             {/* Mobile CTA */}
             <div className="mt-auto border-t pt-6">
-              <Button
-                variant="default"
-                className="w-full"
-                onClick={() => {
-                  handleCtaClick();
-                  setMobileOpen(false);
-                }}
-                asChild
-              >
-                <Link to="/contact">Start a Project</Link>
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => {
+                    setTheme(theme === "dark" ? "light" : "dark");
+                  }}
+                  aria-label="Toggle theme"
+                >
+                  <ThemeIcon className="size-4" />
+                </Button>
+                <Button
+                  variant="default"
+                  className="flex-1"
+                  onClick={() => {
+                    handleCtaClick();
+                    setMobileOpen(false);
+                  }}
+                  asChild
+                >
+                  <Link to="/contact">Start a Project</Link>
+                </Button>
+              </div>
             </div>
           </SheetContent>
         </Sheet>

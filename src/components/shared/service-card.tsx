@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -16,14 +17,10 @@ export function ServiceCard({
   href,
   className,
 }: ServiceCardProps) {
-  return (
-    <a
-      href={href}
-      className={cn(
-        "group block rounded-xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md",
-        className,
-      )}
-    >
+  const isExternal = href.startsWith("http");
+
+  const content = (
+    <>
       <div className="mb-4 flex size-12 items-center justify-center rounded-full bg-accent/10 text-accent">
         <Icon size={24} />
       </div>
@@ -36,6 +33,28 @@ export function ServiceCard({
       <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-accent transition-colors">
         Learn More →
       </span>
-    </a>
+    </>
+  );
+
+  const shared =
+    "group block rounded-xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md";
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(shared, className)}
+      >
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link to={href} className={cn(shared, className)}>
+      {content}
+    </Link>
   );
 }
