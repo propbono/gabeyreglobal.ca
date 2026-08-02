@@ -56,6 +56,8 @@ export function CompanyCard({
       {isLive && href ? (
         <a
           href={href}
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-accent transition-colors"
         >
           Visit {name} →
