@@ -1,52 +1,59 @@
-import { ArrowRight } from "lucide-react";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { cn } from '@/lib/utils'
 
 interface ProjectCardProps {
-  title: string;
-  category: string;
-  description: string;
-  imageSrc?: string;
-  href: string;
+  title: string
+  category: string
+  description: string
+  href: string
+  image?: string
+  className?: string
 }
 
 export function ProjectCard({
   title,
   category,
   description,
-  imageSrc,
   href,
+  image,
+  className,
 }: ProjectCardProps) {
   return (
-    <a href={href} className="group block">
-      <Card className="gap-0 overflow-hidden p-0 transition-shadow duration-200 group-hover:shadow-md">
-        <div className="aspect-video overflow-hidden bg-muted">
-          {imageSrc ? (
-            <img
-              src={imageSrc}
-              alt={title}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-            />
-          ) : (
-            <div className="flex h-full w-full items-center justify-center text-sm text-muted-foreground">
-              No image
-            </div>
-          )}
-        </div>
-        <div className="p-5">
-          <Badge variant="secondary" className="mb-2 text-xs">
-            {category}
-          </Badge>
-          <h3 className="mb-1 font-heading text-lg font-semibold">{title}</h3>
-          <p className="mb-3 line-clamp-2 text-sm text-muted-foreground">
-            {description}
-          </p>
-          <span className="inline-flex items-center gap-1 text-sm font-medium text-accent group-hover:underline">
-            View Project
-            <ArrowRight size={14} />
-          </span>
-        </div>
-      </Card>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        'group block rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-md',
+        className,
+      )}
+    >
+      <div className="aspect-video overflow-hidden rounded-t-xl bg-muted">
+        {image ? (
+          <img
+            src={image}
+            alt={title}
+            className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex size-full items-center justify-center text-muted-foreground text-sm">
+            {title} — preview
+          </div>
+        )}
+      </div>
+      <div className="p-6">
+        <span className="inline-block rounded-full bg-accent/10 px-3 py-1 text-xs font-medium text-accent">
+          {category}
+        </span>
+        <h3 className="mt-3 font-heading text-lg font-semibold text-foreground group-hover:text-accent transition-colors">
+          {title}
+        </h3>
+        <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+          {description}
+        </p>
+        <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary group-hover:text-accent transition-colors">
+          View Project →
+        </span>
+      </div>
     </a>
-  );
+  )
 }

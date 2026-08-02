@@ -11,12 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as CompaniesIndexRouteImport } from './routes/companies/index'
-import { Route as ContactIndexRouteImport } from './routes/contact/index'
-import { Route as ServicesIndexRouteImport } from './routes/services/index'
-import { Route as ServicesDevelopmentRouteImport } from './routes/services/development'
-import { Route as ServicesPrintRouteImport } from './routes/services/print'
-import { Route as WorkIndexRouteImport } from './routes/work/index'
+import { Route as WorkRouteImport } from './routes/work'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,110 +23,40 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CompaniesIndexRoute = CompaniesIndexRouteImport.update({
-  id: '/companies/',
-  path: '/companies/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactIndexRoute = ContactIndexRouteImport.update({
-  id: '/contact/',
-  path: '/contact/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesIndexRoute = ServicesIndexRouteImport.update({
-  id: '/services/',
-  path: '/services/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesDevelopmentRoute = ServicesDevelopmentRouteImport.update({
-  id: '/services/development',
-  path: '/services/development',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ServicesPrintRoute = ServicesPrintRouteImport.update({
-  id: '/services/print',
-  path: '/services/print',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const WorkIndexRoute = WorkIndexRouteImport.update({
-  id: '/work/',
-  path: '/work/',
+const WorkRoute = WorkRouteImport.update({
+  id: '/work',
+  path: '/work',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/services/development': typeof ServicesDevelopmentRoute
-  '/services/print': typeof ServicesPrintRoute
-  '/companies/': typeof CompaniesIndexRoute
-  '/contact/': typeof ContactIndexRoute
-  '/services/': typeof ServicesIndexRoute
-  '/work/': typeof WorkIndexRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/services/development': typeof ServicesDevelopmentRoute
-  '/services/print': typeof ServicesPrintRoute
-  '/companies': typeof CompaniesIndexRoute
-  '/contact': typeof ContactIndexRoute
-  '/services': typeof ServicesIndexRoute
-  '/work': typeof WorkIndexRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/services/development': typeof ServicesDevelopmentRoute
-  '/services/print': typeof ServicesPrintRoute
-  '/companies/': typeof CompaniesIndexRoute
-  '/contact/': typeof ContactIndexRoute
-  '/services/': typeof ServicesIndexRoute
-  '/work/': typeof WorkIndexRoute
+  '/work': typeof WorkRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/services/development'
-    | '/services/print'
-    | '/companies/'
-    | '/contact/'
-    | '/services/'
-    | '/work/'
+  fullPaths: '/' | '/about' | '/work'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/services/development'
-    | '/services/print'
-    | '/companies'
-    | '/contact'
-    | '/services'
-    | '/work'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/services/development'
-    | '/services/print'
-    | '/companies/'
-    | '/contact/'
-    | '/services/'
-    | '/work/'
+  to: '/' | '/about' | '/work'
+  id: '__root__' | '/' | '/about' | '/work'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  ServicesDevelopmentRoute: typeof ServicesDevelopmentRoute
-  ServicesPrintRoute: typeof ServicesPrintRoute
-  CompaniesIndexRoute: typeof CompaniesIndexRoute
-  ContactIndexRoute: typeof ContactIndexRoute
-  ServicesIndexRoute: typeof ServicesIndexRoute
-  WorkIndexRoute: typeof WorkIndexRoute
+  WorkRoute: typeof WorkRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -150,46 +75,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/companies/': {
-      id: '/companies/'
-      path: '/companies'
-      fullPath: '/companies/'
-      preLoaderRoute: typeof CompaniesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact/': {
-      id: '/contact/'
-      path: '/contact'
-      fullPath: '/contact/'
-      preLoaderRoute: typeof ContactIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/': {
-      id: '/services/'
-      path: '/services'
-      fullPath: '/services/'
-      preLoaderRoute: typeof ServicesIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/development': {
-      id: '/services/development'
-      path: '/services/development'
-      fullPath: '/services/development'
-      preLoaderRoute: typeof ServicesDevelopmentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/services/print': {
-      id: '/services/print'
-      path: '/services/print'
-      fullPath: '/services/print'
-      preLoaderRoute: typeof ServicesPrintRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/work/': {
-      id: '/work/'
+    '/work': {
+      id: '/work'
       path: '/work'
-      fullPath: '/work/'
-      preLoaderRoute: typeof WorkIndexRouteImport
+      fullPath: '/work'
+      preLoaderRoute: typeof WorkRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -198,12 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  ServicesDevelopmentRoute: ServicesDevelopmentRoute,
-  ServicesPrintRoute: ServicesPrintRoute,
-  CompaniesIndexRoute: CompaniesIndexRoute,
-  ContactIndexRoute: ContactIndexRoute,
-  ServicesIndexRoute: ServicesIndexRoute,
-  WorkIndexRoute: WorkIndexRoute,
+  WorkRoute: WorkRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

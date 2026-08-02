@@ -1,38 +1,30 @@
-import type { ReactNode } from "react"
-
-import { cn } from "@/lib/utils"
-
-type SectionBackground = "white" | "muted" | "primary"
+import { cn } from '@/lib/utils'
 
 interface SectionWrapperProps {
-  children: ReactNode
-  className?: string
+  children: React.ReactNode
+  background?: 'default' | 'muted' | 'primary'
   id?: string
-  background?: SectionBackground
+  className?: string
 }
 
-const backgroundStyles: Record<SectionBackground, string> = {
-  white: "bg-background",
-  muted: "bg-muted",
-  primary: "bg-primary text-primary-foreground",
+const bgVariants: Record<string, string> = {
+  default: 'bg-background',
+  muted: 'bg-muted',
+  primary: 'bg-primary text-primary-foreground',
 }
 
 export function SectionWrapper({
   children,
-  className,
+  background = 'default',
   id,
-  background = "white",
+  className,
 }: SectionWrapperProps) {
   return (
     <section
       id={id}
-      className={cn(
-        "py-16 md:py-20 lg:py-24",
-        backgroundStyles[background],
-        className,
-      )}
+      className={cn('py-16 md:py-20 lg:py-24', bgVariants[background], className)}
     >
-      <div className="container mx-auto max-w-7xl px-6">{children}</div>
+      <div className="container mx-auto px-6">{children}</div>
     </section>
   )
 }
