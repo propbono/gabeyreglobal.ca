@@ -101,7 +101,7 @@ export const Route = createFileRoute("/api/contact")({
               from: FROM_EMAIL,
               to: TO_EMAIL,
               reply_to: data.email,
-              subject: `New Contact Form: ${escapeHtml(data.serviceInterest)} inquiry from ${escapeHtml(data.name)}`,
+              subject: `New Contact Form: ${data.serviceInterest} inquiry from ${data.name}`,
               html: `
                 <h2>New Contact Form Submission</h2>
                 <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
