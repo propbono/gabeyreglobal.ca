@@ -293,7 +293,7 @@ export function ContactForm() {
             setValue("serviceInterest", value as ContactFormValues["serviceInterest"]);
           }}
         >
-          <SelectTrigger id="serviceInterest" className="w-full">
+          <SelectTrigger id="serviceInterest" className="w-full" onFocus={handleFirstFocus}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -315,7 +315,7 @@ export function ContactForm() {
             setValue("budgetRange", value as ContactFormValues["budgetRange"]);
           }}
         >
-          <SelectTrigger id="budgetRange" className="w-full">
+          <SelectTrigger id="budgetRange" className="w-full" onFocus={handleFirstFocus}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -337,7 +337,7 @@ export function ContactForm() {
             setValue("timeline", value as ContactFormValues["timeline"]);
           }}
         >
-          <SelectTrigger id="timeline" className="w-full">
+          <SelectTrigger id="timeline" className="w-full" onFocus={handleFirstFocus}>
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
