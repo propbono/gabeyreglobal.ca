@@ -1,25 +1,160 @@
 import { Link } from '@tanstack/react-router'
+import { Menu, ChevronDown } from 'lucide-react'
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import { cn } from '@/lib/utils'
+import { NAV_ITEMS } from '@/lib/constants'
+import { posthog } from '@/lib/posthog'
+
+const serviceItem = NAV_ITEMS[0]
+const linkItems = NAV_ITEMS.slice(1)
 
 export default function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  const handleCtaClick = () => {
+    posthog.capture('cta_clicked', {
+      cta_location: 'nav',
+      cta_label: 'Start a Project',
+    })
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-7xl items-center gap-x-6 px-4 py-4 sm:px-6 lg:px-8">
+    <header className="relative h-18 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      <div className="container mx-auto flex h-full max-w-7xl items-center justify-between px-6">
+        {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-2 text-lg font-semibold text-foreground no-underline"
+          className="text-xl font-bold text-primary no-underline"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           Gabeyre Global
         </Link>
 
-        <div className="flex flex-1 items-center justify-end gap-x-4 text-sm font-medium">
-          <Link
-            to="/about"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            About
-          </Link>
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-1 lg:flex">
+          {/* Services dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                className={cn(
+                  'flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground',
+                )}
+              >
+                {serviceItem.label}
+                <ChevronDown className="size-3.5" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="w-52">
+              {serviceItem.children.map((child) => (
+                <DropdownMenuItem key={child.href} asChild>
+                  <Link to={child.href} className="cursor-pointer">
+                    {child.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          {/* Plain nav links */}
+          {linkItems.map((item) => (
+            <Link
+              key={item.href}
+              to={item.href}
+              className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Desktop CTA */}
+        <div className="hidden lg:block">
+          <Button variant="default" size="sm" onClick={handleCtaClick} asChild>
+            <Link to="/contact">Start a Project</Link>
+          </Button>
         </div>
-      </nav>
+
+        {/* Mobile hamburger */}
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <SheetTrigger asChild className="lg:hidden">
+            <Button variant="ghost" size="icon" aria-label="Open menu">
+              <Menu className="size-6" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right" className="flex w-full flex-col sm:max-w-sm">
+            {/* Mobile nav header */}
+            <div className="flex items-center border-b pb-4">
+              <Link
+                to="/"
+                className="text-xl font-bold text-primary no-underline"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+                onClick={() => setMobileOpen(false)}
+              >
+                Gabeyre Global
+              </Link>
+            </div>
+
+            {/* Mobile nav links */}
+            <nav className="flex flex-col gap-4 py-6">
+              {/* Services group */}
+              <div className="flex flex-col gap-2">
+                <span className="text-sm font-semibold text-foreground">
+                  {serviceItem.label}
+                </span>
+                {serviceItem.children.map((child) => (
+                  <Link
+                    key={child.href}
+                    to={child.href}
+                    className="pl-4 text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
+
+              {/* Plain links */}
+              {linkItems.map((item) => (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className="text-sm font-medium text-foreground/80 transition-colors hover:text-foreground"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+
+            {/* Mobile CTA */}
+            <div className="mt-auto border-t pt-6">
+              <Button
+                variant="default"
+                className="w-full"
+                onClick={() => {
+                  handleCtaClick()
+                  setMobileOpen(false)
+                }}
+                asChild
+              >
+                <Link to="/contact">Start a Project</Link>
+              </Button>
+            </div>
+          </SheetContent>
+        </Sheet>
+      </div>
     </header>
   )
 }
