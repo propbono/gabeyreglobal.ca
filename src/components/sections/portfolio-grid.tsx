@@ -11,6 +11,7 @@ const projects = [
     description:
       "Full-stack e-commerce print platform. Custom Next.js build with product catalog, quoting system, and integrated contact workflow.",
     href: "https://gemprint.ca",
+    image: "/images/gemprint-screenshot.png",
   },
   {
     title: "Greg Mozer",
@@ -18,6 +19,7 @@ const projects = [
     description:
       "Personal portfolio and brand site. Demonstrates range across web development, game dev, and creative coding.",
     href: "https://gmozer.ca",
+    image: "/images/gmozer-screenshot.png",
   },
 ];
 
@@ -37,6 +39,7 @@ export function PortfolioGrid() {
             category={project.category}
             description={project.description}
             href={project.href}
+            image={project.image}
           />
         ))}
       </div>

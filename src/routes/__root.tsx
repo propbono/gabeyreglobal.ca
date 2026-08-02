@@ -79,9 +79,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="font-sans antialiased" suppressHydrationWarning>
+      <body className="font-sans antialiased flex min-h-screen flex-col" suppressHydrationWarning>
         <Header />
-        {children}
+        <div className="flex-1">{children}</div>
         <Footer />
         <TanStackDevtools
           config={{
