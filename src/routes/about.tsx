@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Building2, Globe, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SectionWrapper from "@/components/shared/section-wrapper";
-import SectionHeader from "@/components/shared/section-header";
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { SectionHeader } from "@/components/shared/section-header";
 
 export const Route = createFileRoute("/about")({ component: About });
 

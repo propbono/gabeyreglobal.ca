@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Printer, Code2, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SectionWrapper from "@/components/shared/section-wrapper";
-import SectionHeader from "@/components/shared/section-header";
-import ServiceCard from "@/components/shared/service-card";
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { SectionHeader } from "@/components/shared/section-header";
+import { ServiceCard } from "@/components/shared/service-card";
 
 export const Route = createFileRoute("/services/")({ component: ServicesPage });
 

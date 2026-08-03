@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SectionWrapper from "@/components/shared/section-wrapper";
-import SectionHeader from "@/components/shared/section-header";
-import ProjectCard from "@/components/shared/project-card";
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { SectionHeader } from "@/components/shared/section-header";
+import { ProjectCard } from "@/components/shared/project-card";
 
 export const Route = createFileRoute("/work/")({ component: WorkPage });
 

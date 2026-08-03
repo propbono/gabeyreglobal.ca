@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PenTool, Printer, Truck, Palette } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import SectionWrapper from "@/components/shared/section-wrapper";
-import SectionHeader from "@/components/shared/section-header";
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { SectionHeader } from "@/components/shared/section-header";
 
 export const Route = createFileRoute("/services/print")({ component: PrintPage });
 

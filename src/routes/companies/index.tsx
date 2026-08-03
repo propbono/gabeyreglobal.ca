@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import SectionWrapper from "@/components/shared/section-wrapper";
-import SectionHeader from "@/components/shared/section-header";
-import CompanyCard from "@/components/shared/company-card";
+import { SectionWrapper } from "@/components/shared/section-wrapper";
+import { SectionHeader } from "@/components/shared/section-header";
+import { CompanyCard } from "@/components/shared/company-card";
 
 export const Route = createFileRoute("/companies/")({ component: CompaniesPage });
 
