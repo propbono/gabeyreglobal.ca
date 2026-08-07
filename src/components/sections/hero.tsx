@@ -31,7 +31,7 @@ export function HeroSection() {
         </Button>
       </div>
       <p className="mt-8 text-sm text-muted-foreground">
-        Trusted by 50+ businesses since 2017
+        Trusted by 50+ clients since 2017
       </p>
     </section>
   );

@@ -13,7 +13,7 @@ const projects = [
     category: "Commercial Print Website",
     description:
       "Full-stack e-commerce print platform. Custom Next.js build with product catalog, quoting system, and integrated contact workflow.",
-    imageSrc: "/images/gemprint-screenshot.png",
+    image: "/images/gemprint-screenshot.png",
     href: "https://gemprint.ca",
   },
   {
@@ -21,7 +21,7 @@ const projects = [
     category: "Personal Brand & Portfolio",
     description:
       "Personal portfolio and brand site. Demonstrates range across web development, game dev, and creative coding.",
-    imageSrc: "/images/gmozer-screenshot.png",
+    image: "/images/gmozer-screenshot.png",
     href: "https://gmozer.ca",
   },
 ];

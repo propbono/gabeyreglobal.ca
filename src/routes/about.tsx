@@ -8,9 +8,9 @@ export const Route = createFileRoute("/about")({ component: About });
 
 const timeline = [
   {
-    year: "2017",
-    title: "Founded in Ontario",
-    body: "Gabeyre Global Inc was incorporated to bring professional print services to businesses across the Greater Toronto Area. What started as a small print operation quickly grew into a trusted partner for companies throughout Canada.",
+    year: "2026",
+    title: "Growing the Portfolio",
+    body: "Today Gabeyre Global operates multiple businesses under one umbrella. We build and operate the software and services our clients depend on to run theirs — from commercial printing to custom applications.",
   },
   {
     year: "2020",
@@ -18,9 +18,9 @@ const timeline = [
     body: "As clients asked for more — websites, automation, custom tools — we expanded into software development. We brought the same precision and reliability that defined our print business to building web applications.",
   },
   {
-    year: "2026",
-    title: "Growing the Portfolio",
-    body: "Today Gabeyre Global operates multiple businesses under one umbrella. We build and operate the software and services our clients depend on to run theirs — from commercial printing to custom applications.",
+    year: "2017",
+    title: "Founded in Ontario",
+    body: "Gabeyre Global Inc was incorporated to bring professional print services to businesses across the Greater Toronto Area. What started as a small print operation quickly grew into a trusted partner for companies throughout Canada.",
   },
 ];
 

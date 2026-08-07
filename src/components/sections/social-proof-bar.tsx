@@ -1,6 +1,5 @@
 export function SocialProofBar() {
   const stats = [
-    { value: "3", label: "Businesses" },
     { value: "50+", label: "Clients" },
     { value: "2017", label: "Since" },
     { value: "Ontario", label: "Based in" },

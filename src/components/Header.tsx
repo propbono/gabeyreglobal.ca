@@ -39,7 +39,7 @@ export default function Header() {
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
           <span className="text-xl font-bold tracking-tight">Gabeyre Global</span>
-          <span className="text-[0.65rem] font-medium tracking-[0.15em] text-primary/50 uppercase">Inc</span>
+          <span className="text-[0.6rem] font-normal tracking-[0.12em] text-primary/35 uppercase">Inc</span>
         </Link>
 
         {/* Desktop nav */}
@@ -115,7 +115,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
               >
                 <span className="text-xl font-bold tracking-tight">Gabeyre Global</span>
-                <span className="text-[0.65rem] font-medium tracking-[0.15em] text-primary/50 uppercase">Inc</span>
+                <span className="text-[0.6rem] font-normal tracking-[0.12em] text-primary/35 uppercase">Inc</span>
               </Link>
             </div>
 

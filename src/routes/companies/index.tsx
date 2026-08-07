@@ -13,16 +13,6 @@ const companies = [
     href: "https://gemprint.ca",
     status: "live" as const,
   },
-  {
-    name: "New Venture",
-    description: "A software product currently in development. We're building tools to help businesses operate more efficiently.",
-    status: "coming-soon" as const,
-  },
-  {
-    name: "New Venture",
-    description: "An additional service line in exploration. Gabeyre Global continues to identify opportunities where technology can improve traditional industries.",
-    status: "coming-soon" as const,
-  },
 ];
 
 function CompaniesPage() {
@@ -37,6 +27,10 @@ function CompaniesPage() {
           {companies.map((c, i) => (
             <CompanyCard key={`${c.name}-${i}`} {...c} />
           ))}
+          {/* Subtle hint at future growth */}
+          <div className="flex items-center justify-center rounded-xl border border-dashed border-border bg-card/30 p-6 text-center">
+            <p className="text-sm text-muted-foreground/60">More ventures<br />in development</p>
+          </div>
         </div>
       </SectionWrapper>
 
@@ -53,18 +47,13 @@ function CompaniesPage() {
             {/* Line */}
             <div className="h-8 w-px bg-border" />
             {/* Children */}
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div className="rounded-xl border border-border bg-card px-6 py-3 text-center shadow-sm">
                 <span className="text-sm font-semibold text-foreground">Gemprint</span>
                 <p className="text-xs text-muted-foreground">Commercial Print</p>
               </div>
-              <div className="rounded-xl border border-dashed border-border bg-card/50 px-6 py-3 text-center opacity-60">
-                <span className="text-sm font-semibold text-foreground">Coming Soon</span>
-                <p className="text-xs text-muted-foreground">Software Product</p>
-              </div>
-              <div className="rounded-xl border border-dashed border-border bg-card/50 px-6 py-3 text-center opacity-60">
-                <span className="text-sm font-semibold text-foreground">Coming Soon</span>
-                <p className="text-xs text-muted-foreground">New Venture</p>
+              <div className="rounded-xl border border-dashed border-border bg-card/30 px-6 py-3 text-center">
+                <span className="text-sm font-medium text-muted-foreground/60">More coming</span>
               </div>
             </div>
           </div>

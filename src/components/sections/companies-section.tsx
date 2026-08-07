@@ -12,18 +12,6 @@ const companies = [
     href: "https://gemprint.ca",
     status: "live" as const,
   },
-  {
-    id: "venture-1",
-    name: "Coming Soon",
-    description: "A new venture in development.",
-    status: "coming-soon" as const,
-  },
-  {
-    id: "venture-2",
-    name: "Coming Soon",
-    description: "A new venture in development.",
-    status: "coming-soon" as const,
-  },
 ];
 
 export function CompaniesSection() {
@@ -44,6 +32,9 @@ export function CompaniesSection() {
             status={company.status}
           />
         ))}
+        <div className="flex items-center justify-center rounded-xl border border-dashed border-border bg-card/30 p-6 text-center">
+          <p className="text-sm text-muted-foreground/60">More ventures<br />in development</p>
+        </div>
       </div>
     </SectionWrapper>
   );
