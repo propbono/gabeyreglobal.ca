@@ -38,8 +38,7 @@ export default function Header() {
           className="flex items-baseline gap-1 text-primary no-underline"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
-          <span className="text-xl font-bold tracking-tight">Gabeyre Global</span>
-          <span className="text-[0.6rem] font-normal tracking-[0.12em] text-primary/35 uppercase">Inc</span>
+          <span className="text-xl font-bold tracking-tight">Gabeyre Global Inc</span>
         </Link>
 
         {/* Desktop nav */}
@@ -114,8 +113,7 @@ export default function Header() {
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
                 onClick={() => setMobileOpen(false)}
               >
-                <span className="text-xl font-bold tracking-tight">Gabeyre Global</span>
-                <span className="text-[0.6rem] font-normal tracking-[0.12em] text-primary/35 uppercase">Inc</span>
+                <span className="text-xl font-bold tracking-tight">Gabeyre Global Inc</span>
               </Link>
             </div>
 
