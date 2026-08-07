@@ -21,6 +21,22 @@ const projects = [
     href: "https://gmozer.ca",
     image: "/images/gmozer-screenshot.png",
   },
+  {
+    title: "Cloudfide",
+    category: "Web Application",
+    description:
+      "Cloud-based file tree explorer. Built with React and modern web technologies.",
+    href: "https://cloudfide.vercel.app",
+    image: "/images/cloudfide-screenshot.png",
+  },
+  {
+    title: "Wizcode Music",
+    category: "Web Application",
+    description:
+      "Music discovery app using iTunes API and React Query. Demonstrates API integration, state management, and testing with Vitest.",
+    href: "https://wizcode-music.vercel.app",
+    image: "/images/wizcode-screenshot.png",
+  },
 ];
 
 export function PortfolioGrid() {
